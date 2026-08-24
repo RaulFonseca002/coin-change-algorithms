@@ -1,4 +1,4 @@
-# paa3 — Coin change, greedy vs exhaustive
+# Coin change — greedy vs exhaustive
 
 Two solutions to the coin change problem, run against each other with timing:
 a greedy algorithm that always takes the largest coin below the remaining value,
