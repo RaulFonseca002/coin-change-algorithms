@@ -1,3 +1,28 @@
+# paa3 — Coin change, greedy vs exhaustive
+
+Two solutions to the coin change problem, run against each other with timing:
+a greedy algorithm that always takes the largest coin below the remaining value,
+and an exhaustive search over permutations that finds the true minimum.
+
+The greedy version uses a `std::set` so the next-smaller coin is found directly.
+The exhaustive version expands the coin set into a vector holding, for each coin,
+the maximum count that could contribute to the target, then permutes it — which
+makes `std::next_permutation` usable but grows fast enough that the comparison is
+really a demonstration of why greedy is used in practice.
+
+Greedy is optimal only for well-formed coin systems; the exhaustive run is what
+shows when it is wrong.
+
+```bash
+./make.sh          # build and run
+```
+
+Reads `input.txt`, writes `output.txt`.
+
+Original notes follow in Portuguese.
+
+---
+
 # paa3
  
 o codigo ultiliza do algoritimo guloso e do algoritimo de permutacao para executar e avaliar as solucoes achadas por ambos
