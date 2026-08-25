@@ -1,17 +1,19 @@
 # Coin change — greedy vs exhaustive
 
-Two solutions to the coin change problem, run against each other with timing:
-a greedy algorithm that always takes the largest coin below the remaining value,
-and an exhaustive search over permutations that finds the true minimum.
+Two ways to make a target value out of a set of coins, run against each other
+with timing. Algorithms coursework.
 
-The greedy version uses a `std::set` so the next-smaller coin is found directly.
-The exhaustive version expands the coin set into a vector holding, for each coin,
-the maximum count that could contribute to the target, then permutes it — which
-makes `std::next_permutation` usable but grows fast enough that the comparison is
-really a demonstration of why greedy is used in practice.
+The greedy solution keeps the coins in a `std::set`, which stays ordered, so
+finding the largest coin below the remaining value is a direct lookup rather than
+a scan. It takes that coin as many times as it fits, subtracts, and repeats.
 
-Greedy is optimal only for well-formed coin systems; the exhaustive run is what
-shows when it is wrong.
+The exhaustive solution expands the coin set into a vector that holds each coin
+as many times as it could contribute to the target, then walks the permutations
+of that vector with `std::next_permutation`, summing until it reaches the target
+and keeping whichever valid combination used the fewest coins.
+
+Greedy is optimal only when the coin system is well formed. The exhaustive run is
+what shows you the cases where it is wrong, and how much that costs to find out.
 
 ```bash
 ./make.sh          # build and run
